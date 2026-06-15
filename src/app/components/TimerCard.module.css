@@ -3,13 +3,21 @@
   align-items: center;
   gap: 22px;
   background: rgba(255,255,255,0.97);
+  border: none;
   border-radius: 20px;
   padding: 22px 26px;
   min-width: 360px;
   cursor: pointer;
   text-decoration: none;
+  text-align: left;
+  font-family: var(--font-montserrat), sans-serif;
+  color: inherit;
   transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s;
   box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+}
+.card:disabled {
+  cursor: wait;
+  opacity: 0.92;
 }
 .card:hover { transform: translateY(-5px); box-shadow: 0 16px 56px rgba(0,0,0,0.45); }
 

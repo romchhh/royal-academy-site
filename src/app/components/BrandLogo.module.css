@@ -21,7 +21,7 @@
 }
 
 .line1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-weight: 800;
   font-size: var(--logo-text-size, 17px);
   letter-spacing: -0.02em;
@@ -29,7 +29,7 @@
 }
 
 .line2 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-weight: 600;
   font-size: var(--logo-sub-size, 12px);
   letter-spacing: 0.08em;

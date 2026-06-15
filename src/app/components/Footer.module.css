@@ -51,15 +51,32 @@
   color: var(--deep);
   margin-bottom: 4px;
 }
-.col p,
-.col a {
+
+.col p {
+  font-size: 14px;
+  color: rgba(var(--deep-rgb), 0.58);
+  line-height: 1.65;
+}
+
+.inlineLink {
   font-size: 14px;
   color: rgba(var(--deep-rgb), 0.58);
   text-decoration: none;
   line-height: 1.65;
   transition: color 0.2s;
 }
-.col a:hover { color: var(--sky); }
+
+button.inlineLink {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 14px;
+}
+
+.inlineLink:hover { color: var(--sky); }
 
 .wordmark {
   display: flex;
@@ -87,7 +104,6 @@
   transition: color 0.2s;
 }
 .bottom a:hover { color: var(--deep); }
-.dev { text-decoration: underline !important; letter-spacing: 0.04em; }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .footer {

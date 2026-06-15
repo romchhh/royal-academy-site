@@ -33,6 +33,16 @@ src/app/
     └── Footer.tsx
 ```
 
+## Оплата (Monobank)
+
+1. Скопіюйте `.env.example` у `.env` і заповніть змінні
+2. `MONO_TOKEN` — токен з [web.monobank.ua](https://web.monobank.ua) (тільки на сервері)
+3. `TELEGRAM_BOT_TOKEN` та `TELEGRAM_CHAT_ID` — для сповіщень про оплату в групу
+4. `NEXT_PUBLIC_TELEGRAM_BOT_URL` — посилання на бот для сторінки `/success`
+5. `NEXT_PUBLIC_SITE_URL` — публічний URL сайту (потрібен для webhook Monobank)
+
+Потік: форма → `/api/payment/create` → Monobank → webhook `/api/mono-webhook` → Telegram → redirect `/success`
+
 ## SEO
 
 - Metadata: title, description, keywords, Open Graph, Twitter Cards

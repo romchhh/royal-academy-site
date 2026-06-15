@@ -30,7 +30,7 @@
   border: none;
   cursor: pointer;
   text-align: left;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   transition: color 0.2s;
 }
 

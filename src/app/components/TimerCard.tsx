@@ -1,12 +1,13 @@
 'use client'
 import useCountdown from '../hooks/useCountdown'
+import PaymentButton from './PaymentButton'
 import styles from './TimerCard.module.css'
 
 export default function TimerCard({ className = '' }: { className?: string }) {
   const time = useCountdown()
 
   return (
-    <a href="#kontakt" className={`${styles.card} ${className}`}>
+    <PaymentButton className={`${styles.card} ${className}`} aria-label="Оформити доступ зі знижкою 80%">
       <div className={styles.cardText}>
         <p className={styles.timer}>
           <b>{time.h}</b><span>г</span>
@@ -20,6 +21,6 @@ export default function TimerCard({ className = '' }: { className?: string }) {
           <path d="M2 14 L14 2 M6 2 H14 V10" />
         </svg>
       </div>
-    </a>
+    </PaymentButton>
   )
 }

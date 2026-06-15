@@ -1,4 +1,5 @@
 import CtaBlock from './CtaBlock'
+import PaymentButton from './PaymentButton'
 import FaqAccordion from './FaqAccordion'
 import { SITE_FAQ } from '../site'
 import styles from './MarathonSections.module.css'
@@ -316,12 +317,12 @@ export default function MarathonSections() {
                 Ви будете далі думати &ldquo;треба вивчити англійську&rdquo;, чи вже почнете говорити?
               </p>
             </div>
-            <a href="#kontakt" className={styles.finalCta}>
+            <PaymentButton className={styles.finalCta} aria-label="Приєднатись до марафону за 490 грн">
               🚀 Приєднатись до марафону за 490 грн
               <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M2 14 L14 2 M6 2 H14 V10" />
               </svg>
-            </a>
+            </PaymentButton>
           </div>
         </div>
       </section>

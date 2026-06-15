@@ -8,8 +8,9 @@
   gap: 10px;
   background: var(--sky);
   color: #fff;
+  border: none;
   text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-size: 15px;
   font-weight: 800;
   letter-spacing: 0.04em;

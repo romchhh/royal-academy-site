@@ -93,7 +93,7 @@
 
 /* ── Typography ── */
 .heading {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-weight: 800;
   font-size: var(--heading-section);
   line-height: 1.02;
@@ -103,7 +103,7 @@
 }
 
 .headingLight {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-weight: 800;
   font-size: var(--heading-section);
   line-height: 1.02;
@@ -165,7 +165,7 @@
 .introHeading {
   position: relative;
   z-index: 1;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-weight: 800;
   font-size: clamp(28px, 3.6vw, 40px);
   line-height: 1.18;
@@ -816,7 +816,9 @@
   gap: 14px;
   background: var(--sky);
   color: #fff;
+  border: none;
   text-decoration: none;
+  font-family: var(--font-montserrat), sans-serif;
   font-size: 17px;
   font-weight: 800;
   letter-spacing: 0.03em;

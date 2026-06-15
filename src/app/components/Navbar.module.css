@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 34px var(--page-x);
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   transition: background 0.35s, backdrop-filter 0.35s, padding 0.35s;
 }
 
@@ -37,7 +37,7 @@
   gap: 44px;
 }
 .center a {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-size: 17px;
   font-weight: 600;
   text-decoration: none;
@@ -96,8 +96,10 @@
   align-items: center;
   gap: 12px;
   background: var(--sky);
+  border: none;
   border-radius: 50px;
   padding: 16px 34px;
+  font-family: var(--font-montserrat), sans-serif;
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -148,11 +150,11 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
 }
 .drawer.open { opacity: 1; pointer-events: all; }
 .drawer a {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-size: 44px;
   font-weight: 800;
   color: #fff;
@@ -161,12 +163,13 @@
 }
 .drawer a:hover { color: var(--sky); }
 .drawerCta {
-  font-family: inherit !important;
+  font-family: var(--font-montserrat), sans-serif !important;
   font-size: 16px !important;
   font-weight: 700 !important;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   background: var(--sky);
+  border: none;
   border-radius: 50px;
   padding: 18px 44px;
   color: #fff !important;

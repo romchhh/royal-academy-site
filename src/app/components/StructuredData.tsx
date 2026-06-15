@@ -1,4 +1,5 @@
 import {
+  MARATHON_PRICE,
   SITE_DESCRIPTION,
   SITE_EMAIL,
   SITE_FAQ,
@@ -8,6 +9,7 @@ import {
   SITE_PHONE,
   SITE_TITLE,
   SITE_URL,
+  TELEGRAM_BOT_URL,
 } from '../site'
 
 function JsonLd({ data }: { data: Record<string, unknown> }) {
@@ -30,7 +32,21 @@ export default function StructuredData() {
     email: SITE_EMAIL,
     telephone: SITE_PHONE,
     description: SITE_DESCRIPTION,
-    sameAs: [],
+    sameAs: [TELEGRAM_BOT_URL],
+  }
+
+  const website = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: SITE_URL,
+    inLanguage: 'uk-UA',
+    description: SITE_DESCRIPTION,
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      logo: `${SITE_URL}${SITE_LOGO}`,
+    },
   }
 
   const course = {
@@ -47,7 +63,7 @@ export default function StructuredData() {
     inLanguage: 'uk',
     offers: {
       '@type': 'Offer',
-      price: '490',
+      price: String(MARATHON_PRICE),
       priceCurrency: 'UAH',
       availability: 'https://schema.org/InStock',
       url: `${SITE_URL}/#kontakt`,
@@ -66,11 +82,7 @@ export default function StructuredData() {
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     inLanguage: 'uk-UA',
-    isPartOf: {
-      '@type': 'WebSite',
-      name: SITE_NAME,
-      url: SITE_URL,
-    },
+    isPartOf: { '@id': `${SITE_URL}#website` },
     about: {
       '@type': 'Thing',
       name: 'Марафон англійської мови',
@@ -93,6 +105,7 @@ export default function StructuredData() {
 
   return (
     <>
+      <JsonLd data={{ ...website, '@id': `${SITE_URL}#website` }} />
       <JsonLd data={organization} />
       <JsonLd data={course} />
       <JsonLd data={webPage} />

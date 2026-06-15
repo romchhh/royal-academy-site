@@ -24,6 +24,9 @@ yarn-error.log*
 .env*.local
 .env
 
+# payment records
+/data
+
 # typescript
 *.tsbuildinfo
 

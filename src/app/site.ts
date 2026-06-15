@@ -28,6 +28,24 @@ export const SITE_PHONE_DISPLAY = '+380 97 123 45 67'
 
 export const SITE_THEME_COLOR = '#C41E3A'
 
+export const MARATHON_PRICE = 490
+export const MARATHON_PRICE_OLD = 2450
+
+export const TELEGRAM_BOT_URL =
+  process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL ?? 'https://t.me/TeleBotsNowayrmBot'
+
+export const SITE_NAV = [
+  { href: '#pro-marafon', label: 'Про марафон' },
+  { href: '#programa', label: 'Програма' },
+  { href: '#faq', label: 'Питання' },
+] as const
+
+export const SITE_CONTACT_LINKS = [
+  { href: `tel:${SITE_PHONE}`, label: SITE_PHONE_DISPLAY, external: false },
+  { href: `mailto:${SITE_EMAIL}`, label: SITE_EMAIL, external: false },
+  { href: TELEGRAM_BOT_URL, label: 'Telegram-бот', external: true },
+] as const
+
 export const MARATHON_INCLUDES = [
   '10 занять з відео, практикою та speaking',
   '70 днів підтримки від куратора',

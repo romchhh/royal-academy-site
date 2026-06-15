@@ -9,18 +9,46 @@ export default function FloatingCta() {
 
   useEffect(() => {
     const hero = document.querySelector('[data-hero]')
-    if (!hero) {
-      setVisible(true)
-      return
+    const footer = document.querySelector('[data-footer]')
+
+    let heroInView = Boolean(hero)
+    let footerInView = false
+
+    const updateVisibility = () => {
+      setVisible(!heroInView && !footerInView)
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setVisible(!entry.isIntersecting),
-      { threshold: 0.12 },
-    )
+    const observers: IntersectionObserver[] = []
 
-    observer.observe(hero)
-    return () => observer.disconnect()
+    if (hero) {
+      const heroObserver = new IntersectionObserver(
+        ([entry]) => {
+          heroInView = entry.isIntersecting
+          updateVisibility()
+        },
+        { threshold: 0.12 },
+      )
+      heroObserver.observe(hero)
+      observers.push(heroObserver)
+    }
+
+    if (footer) {
+      const footerObserver = new IntersectionObserver(
+        ([entry]) => {
+          footerInView = entry.isIntersecting
+          updateVisibility()
+        },
+        { threshold: 0.05, rootMargin: '0px 0px -40px 0px' },
+      )
+      footerObserver.observe(footer)
+      observers.push(footerObserver)
+    }
+
+    if (!hero) {
+      updateVisibility()
+    }
+
+    return () => observers.forEach((observer) => observer.disconnect())
   }, [])
 
   return (

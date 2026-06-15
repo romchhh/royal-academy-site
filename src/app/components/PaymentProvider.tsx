@@ -9,13 +9,13 @@ import {
   type ReactNode,
 } from 'react'
 import { MARATHON_PRICE } from '../site'
+import ConsentLabel from './ConsentLabel'
 import { startPayment } from '@/lib/startPayment'
 import styles from './PaymentModal.module.css'
 
 type PaymentFormState = {
   name: string
-  phone: string
-  telegram: string
+  contact: string
   consent: boolean
 }
 
@@ -27,8 +27,7 @@ const PaymentContext = createContext<PaymentContextValue | null>(null)
 
 const emptyForm = (): PaymentFormState => ({
   name: '',
-  phone: '',
-  telegram: '',
+  contact: '',
   consent: false,
 })
 
@@ -78,16 +77,15 @@ export function PaymentProvider({ children }: { children: ReactNode }) {
     e.preventDefault()
 
     const name = form.name.trim()
-    const phone = form.phone.trim()
-    const telegram = form.telegram.trim()
+    const contact = form.contact.trim()
 
     if (!name) {
       setError('Вкажіть ім\'я')
       return
     }
 
-    if (!phone && !telegram) {
-      setError('Вкажіть номер телефону або Telegram')
+    if (!contact) {
+      setError('Вкажіть телефон або Telegram')
       return
     }
 
@@ -97,7 +95,7 @@ export function PaymentProvider({ children }: { children: ReactNode }) {
     setError('')
 
     try {
-      await startPayment({ name, phone, telegram })
+      await startPayment({ name, contact })
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Сталася помилка. Спробуйте ще раз.')
       setLoading(false)
@@ -152,28 +150,17 @@ export function PaymentProvider({ children }: { children: ReactNode }) {
               </div>
 
               <div className={styles.field}>
-                <label htmlFor="payment-phone">Номер телефону</label>
+                <label htmlFor="payment-contact">Телефон або Telegram</label>
                 <input
-                  id="payment-phone"
-                  type="tel"
-                  placeholder="+380..."
-                  value={form.phone}
-                  onChange={setField('phone')}
-                />
-              </div>
-
-              <div className={styles.field}>
-                <label htmlFor="payment-telegram">Telegram</label>
-                <input
-                  id="payment-telegram"
+                  id="payment-contact"
                   type="text"
-                  placeholder="@username"
-                  value={form.telegram}
-                  onChange={setField('telegram')}
+                  placeholder="+380... або @username"
+                  value={form.contact}
+                  onChange={setField('contact')}
+                  required
+                  autoComplete="tel username"
                 />
               </div>
-
-              <p className={styles.hint}>Вкажіть телефон або Telegram — достатньо одного з варіантів.</p>
 
               <label className={styles.consent}>
                 <input
@@ -182,13 +169,24 @@ export function PaymentProvider({ children }: { children: ReactNode }) {
                   onChange={setField('consent')}
                   required
                 />
-                <span>Погоджуюсь на обробку персональних даних</span>
+                <span><ConsentLabel /></span>
               </label>
 
               {error && <p className={styles.error}>{error}</p>}
 
               <button type="submit" className={styles.submit} disabled={!form.consent || loading}>
-                {loading ? 'Перенаправлення на оплату…' : `Перейти до оплати ${MARATHON_PRICE} грн`}
+                {loading ? (
+                  'Перенаправлення на оплату…'
+                ) : (
+                  <>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <rect x="2" y="5" width="20" height="14" rx="2" />
+                      <path d="M2 10h20" />
+                      <path d="M6 15h4" />
+                    </svg>
+                    Перейти до оплати {MARATHON_PRICE} грн
+                  </>
+                )}
               </button>
             </form>
           </div>

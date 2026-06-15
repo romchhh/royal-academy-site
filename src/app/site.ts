@@ -43,16 +43,14 @@ export const TELEGRAM_BOT_URL =
   process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL ?? 'https://t.me/TeleBotsNowayrmBot'
 
 export const SITE_NAV = [
-  { href: '#pro-marafon', label: 'Про марафон' },
-  { href: '#programa', label: 'Програма' },
-  { href: '#faq', label: 'Питання' },
+  { href: '/#pro-marafon', label: 'Про марафон' },
+  { href: '/#programa', label: 'Програма' },
+  { href: '/#faq', label: 'Питання' },
 ] as const
 
-export const SITE_CONTACT_LINKS = [
-  { href: `tel:${SITE_PHONE}`, label: SITE_PHONE_DISPLAY, external: false },
-  { href: `mailto:${SITE_EMAIL}`, label: SITE_EMAIL, external: false },
-  { href: TELEGRAM_BOT_URL, label: 'Telegram-бот', external: true },
-] as const
+export const PRIVACY_POLICY_PATH = '/privacy'
+
+export const TELEBOTS_URL = 'https://telebots.site/uk'
 
 export const MARATHON_INCLUDES = [
   '10 занять з відео, практикою та speaking',

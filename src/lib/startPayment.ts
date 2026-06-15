@@ -1,7 +1,6 @@
 export type PaymentPayload = {
   name: string
-  phone?: string
-  telegram?: string
+  contact: string
 }
 
 export async function startPayment(payload: PaymentPayload): Promise<void> {

@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useState } from 'react'
+import ConsentLabel from './ConsentLabel'
 import { SITE_CONTACT_IMAGE, SITE_NAME } from '../site'
 import styles from './ContactSection.module.css'
 
@@ -95,7 +96,7 @@ export default function ContactSection() {
               </div>
               <label className={styles.consent}>
                 <input type="checkbox" checked={form.consent} onChange={set('consent')} required />
-                <span>Погоджуюсь на обробку персональних даних</span>
+                <span><ConsentLabel /></span>
               </label>
 
               {error && <p className={styles.error}>{error}</p>}

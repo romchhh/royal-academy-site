@@ -1,11 +1,11 @@
-.marathon-page {
-  --deep:  #01060F;
+:root {
+  --deep: #01060F;
   --deep-rgb: 1, 6, 15;
   --slate: #4A5568;
-  --sky:   #C41E3A;
+  --sky: #C41E3A;
   --sky-rgb: 196, 30, 58;
   --sky-dark: #9A182E;
-  --sand:  #E8C9CC;
+  --sand: #E8C9CC;
   --white: #ffffff;
   --black: #000308;
   --page-x: clamp(32px, 6vw, 80px);
@@ -23,6 +23,9 @@
   --heading-card: 17px;
   --heading-faq: 21px;
   --heading-faq-sm: 18px;
+}
+
+.marathon-page {
   font-family: var(--font-montserrat), sans-serif;
   background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
   color: var(--deep);
@@ -65,7 +68,7 @@
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .marathon-page {
+  :root {
     --page-x: clamp(28px, 4.5vw, 48px);
     --section-y: clamp(36px, 4.5vw, 56px);
     --section-y-md: 32px;

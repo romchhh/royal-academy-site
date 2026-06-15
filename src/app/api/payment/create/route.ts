@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import crypto from 'crypto'
 import { createMonoInvoice } from '@/lib/mono'
 import { encodePaymentMeta } from '@/lib/paymentMeta'
+import { splitContact } from '@/lib/parseContact'
 import { MARATHON_PRICE, SITE_NAME, SITE_URL } from '@/app/site'
 
 export async function POST(req: NextRequest) {
@@ -16,15 +17,15 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json()
     const name = typeof body.name === 'string' ? body.name.trim() : ''
-    const phone = typeof body.phone === 'string' ? body.phone.trim() : ''
-    const telegram = typeof body.telegram === 'string' ? body.telegram.trim() : ''
+    const contact = typeof body.contact === 'string' ? body.contact.trim() : ''
+    const { phone, telegram } = splitContact(contact)
 
     if (!name) {
       return NextResponse.json({ error: 'Вкажіть ім\'я' }, { status: 400 })
     }
 
-    if (!phone && !telegram) {
-      return NextResponse.json({ error: 'Вкажіть номер телефону або Telegram' }, { status: 400 })
+    if (!contact) {
+      return NextResponse.json({ error: 'Вкажіть телефон або Telegram' }, { status: 400 })
     }
 
     const reference = crypto.randomUUID()

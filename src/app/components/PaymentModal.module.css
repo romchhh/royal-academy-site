@@ -145,7 +145,7 @@
   justify-content: center;
   gap: 10px;
   width: 100%;
-  background: var(--sky);
+  background: var(--sky, #C41E3A);
   color: #fff;
   border: none;
   border-radius: 50px;

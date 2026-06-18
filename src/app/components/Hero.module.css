@@ -11,32 +11,37 @@
 .bg {
   position: absolute;
   inset: 0;
-  transform: scale(1.04);
+  transform: scale(1.14);
   animation: slowZoom 20s ease-out forwards;
 }
 
 .bgImage {
   object-fit: cover;
-  object-position: center center;
+  object-position: center 38%;
 }
 
 @media (min-width: 769px) {
   .bg {
-    top: -14%;
-    bottom: -14%;
+    top: -18%;
+    bottom: -18%;
     height: auto;
-    transform: scale(1.1);
+    transform: scale(1.22);
     animation: slowZoomDesktop 20s ease-out forwards;
   }
 
   .bgImage {
-    object-position: center center;
+    object-position: center 36%;
   }
 }
 
+@keyframes slowZoom {
+  from { transform: scale(1.14); }
+  to   { transform: scale(1.08); }
+}
+
 @keyframes slowZoomDesktop {
-  from { transform: scale(1.10); }
-  to   { transform: scale(1.03); }
+  from { transform: scale(1.22); }
+  to   { transform: scale(1.14); }
 }
 
 .overlay {

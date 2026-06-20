@@ -44,6 +44,11 @@
   to   { transform: scale(1.14); }
 }
 
+@keyframes slowZoomMobile {
+  from { transform: scale(1.20); }
+  to   { transform: scale(1.16); }
+}
+
 .overlay {
   position: absolute;
   inset: 0;
@@ -59,7 +64,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 var(--page-x) 52px;
+  padding: 0 var(--page-x) clamp(88px, 12vh, 120px);
 }
 
 .textBlock {
@@ -73,7 +78,7 @@
 .headline {
   font-family: var(--font-montserrat), sans-serif;
   font-weight: 800;
-  font-size: clamp(36px, 4.8vw, 58px);
+  font-size: clamp(38px, 5.2vw, 62px);
   line-height: 1.12;
   color: #fff;
   letter-spacing: -0.03em;
@@ -92,8 +97,9 @@
 .highlight {
   font-style: italic;
   font-weight: 800;
-  color: var(--sky);
+  color: #E8751A;
   letter-spacing: -0.02em;
+  text-shadow: 0 1px 10px rgba(232, 117, 26, 0.35);
 }
 
 .prizeBlock {
@@ -106,20 +112,24 @@
 }
 
 .prizeLabel {
-  font-size: clamp(17px, 2.1vw, 22px);
+  font-size: clamp(18px, 2.3vw, 24px);
   font-weight: 600;
   color: rgba(255, 255, 255, 0.92);
   letter-spacing: 0.01em;
 }
 
+.prizeLabelMobile {
+  display: none;
+}
+
 .prizeAmount {
   display: inline-flex;
   align-items: center;
-  padding: 8px 18px;
+  padding: 9px 20px;
   border-radius: 999px;
   background: var(--sky);
   color: #fff;
-  font-size: clamp(22px, 3vw, 32px);
+  font-size: clamp(24px, 3.2vw, 36px);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -148,7 +158,7 @@
 
 .priceLead {
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -166,13 +176,13 @@
 
 .pricePrefix,
 .priceInstead {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.88);
 }
 
 .oldPrice {
-  font-size: clamp(18px, 2.2vw, 22px);
+  font-size: clamp(19px, 2.4vw, 24px);
   font-weight: 600;
   color: rgba(255, 255, 255, 0.5);
   text-decoration: line-through;
@@ -182,7 +192,7 @@
 .newPrice {
   position: relative;
   display: inline-block;
-  font-size: clamp(30px, 4.2vw, 42px);
+  font-size: clamp(32px, 4.6vw, 46px);
   font-weight: 900;
   color: #fff;
   letter-spacing: -0.03em;
@@ -207,11 +217,11 @@
 
 .discountBadge {
   align-self: flex-start;
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.95);
   color: var(--sky);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -219,7 +229,7 @@
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .body {
-    padding: 0 var(--page-x) 44px;
+    padding: 0 var(--page-x) clamp(80px, 11vh, 108px);
   }
 
   .textBlock {
@@ -228,7 +238,7 @@
   }
 
   .headline {
-    font-size: clamp(34px, 4.8vw, 46px);
+    font-size: clamp(36px, 5vw, 50px);
     max-width: 85%;
     line-height: 1.14;
   }
@@ -269,13 +279,25 @@
     min-height: unset;
   }
 
+  .bg {
+    top: -10%;
+    bottom: -10%;
+    height: auto;
+    transform: scale(1.20);
+    animation: slowZoomMobile 20s ease-out forwards;
+  }
+
+  .bgImage {
+    object-position: center 34%;
+  }
+
   .body {
     position: relative;
     flex: 1;
     min-height: 0;
     justify-content: flex-end;
     align-items: stretch;
-    padding: 88px var(--page-x) max(44px, calc(env(safe-area-inset-bottom) + 32px));
+    padding: 76px var(--page-x) max(104px, calc(env(safe-area-inset-bottom) + 88px));
     gap: 0;
     transform: none;
   }
@@ -284,28 +306,40 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 16px;
+    justify-content: flex-start;
+    gap: 0;
     margin-bottom: 0;
-    padding-bottom: 20px;
+    padding-top: clamp(4px, 3vh, 28px);
+    padding-bottom: 0;
   }
 
   .headline {
-    font-size: clamp(26px, 7vw, 34px);
+    font-size: clamp(28px, 7.8vw, 38px);
     line-height: 1.14;
   }
 
   .prizeBlock {
     gap: 10px 12px;
+    margin-top: auto;
+    padding-top: clamp(24px, 8vh, 72px);
+    margin-bottom: 0;
+  }
+
+  .prizeLabelDesktop {
+    display: none;
+  }
+
+  .prizeLabelMobile {
+    display: inline;
   }
 
   .prizeLabel {
-    font-size: 16px;
+    font-size: 17px;
   }
 
   .prizeAmount {
-    font-size: 22px;
-    padding: 7px 16px;
+    font-size: 24px;
+    padding: 8px 17px;
   }
 
   .bottomRow {
@@ -316,7 +350,8 @@
     gap: 14px;
     flex-shrink: 0;
     width: 100%;
-    margin-bottom: 12px;
+    margin-top: clamp(20px, 4vh, 32px);
+    margin-bottom: 0;
   }
 
   .priceBlock {
@@ -325,41 +360,46 @@
   }
 
   .priceLead {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .pricePrefix,
   .priceInstead {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .newPrice {
-    font-size: 34px;
+    font-size: 38px;
   }
 
   .oldPrice {
-    font-size: 18px;
+    font-size: 19px;
   }
 }
 
 @media (max-width: 390px) {
   .body {
-    padding: 84px var(--page-x) max(40px, calc(env(safe-area-inset-bottom) + 28px));
+    padding: 72px var(--page-x) max(96px, calc(env(safe-area-inset-bottom) + 80px));
     transform: none;
   }
 
   .textBlock {
-    gap: 14px;
-    padding-bottom: 16px;
+    gap: 0;
+    padding-top: 2px;
+    padding-bottom: 0;
+  }
+
+  .prizeBlock {
+    padding-top: clamp(20px, 7vh, 56px);
   }
 
   .headline {
-    font-size: clamp(24px, 7vw, 30px);
+    font-size: clamp(26px, 7.8vw, 32px);
     line-height: 1.16;
   }
 
   .prizeAmount {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .bottomRow {
@@ -367,34 +407,45 @@
   }
 
   .newPrice {
-    font-size: 30px;
+    font-size: 34px;
   }
 }
 
 @media (max-width: 768px) and (max-height: 700px) {
+  .bg {
+    top: -8%;
+    bottom: -8%;
+    transform: scale(1.18);
+  }
+
   .body {
-    padding-top: 76px;
-    padding-bottom: max(36px, calc(env(safe-area-inset-bottom) + 24px));
+    padding-top: 68px;
+    padding-bottom: max(88px, calc(env(safe-area-inset-bottom) + 72px));
     transform: none;
   }
 
   .textBlock {
-    gap: 12px;
-    padding-bottom: 14px;
+    gap: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .prizeBlock {
+    padding-top: clamp(16px, 6vh, 48px);
   }
 
   .headline {
-    font-size: clamp(22px, 6.5vw, 28px);
+    font-size: clamp(24px, 7.2vw, 30px);
     line-height: 1.14;
   }
 
   .prizeLabel {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .prizeAmount {
-    font-size: 19px;
-    padding: 6px 14px;
+    font-size: 21px;
+    padding: 7px 15px;
   }
 
   .bottomRow {
@@ -407,6 +458,6 @@
   }
 
   .newPrice {
-    font-size: 28px;
+    font-size: 32px;
   }
 }

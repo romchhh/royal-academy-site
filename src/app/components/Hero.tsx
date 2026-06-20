@@ -27,7 +27,10 @@ export default function Hero() {
           </h1>
 
           <p className={styles.prizeBlock}>
-            <span className={styles.prizeLabel}>Покращуй й вигравай</span>
+            <span className={styles.prizeLabel}>
+              <span className={styles.prizeLabelDesktop}>Покращуй й вигравай</span>
+              <span className={styles.prizeLabelMobile}>Вигравай</span>
+            </span>
             <span className={styles.prizeAmount}>10 000 грн</span>
           </p>
         </div>

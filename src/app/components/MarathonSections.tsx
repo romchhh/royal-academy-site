@@ -1,8 +1,9 @@
 import CtaBlock from './CtaBlock'
 import PaymentButton from './PaymentButton'
-import ScenarioFlipCard from './ScenarioFlipCard'
+import ScenarioGrid from './ScenarioGrid'
 import FaqAccordion from './FaqAccordion'
-import { SITE_FAQ } from '../site'
+import Image from 'next/image'
+import { SITE_FAQ, SITE_MARATHON_STEPS_IMAGE, SITE_NAME } from '../site'
 import styles from './MarathonSections.module.css'
 
 const BENEFITS = [
@@ -179,15 +180,7 @@ export default function MarathonSections() {
           <p className={styles.scenarioHint}>
             Натисніть на картку, щоб побачити приклад англійською. Натисніть ще раз, щоб повернути.
           </p>
-          <div className={styles.scenarioGrid}>
-            {SCENARIOS.map((s, i) => (
-              <ScenarioFlipCard
-                key={s.title}
-                scenario={s}
-                wide={i === SCENARIOS.length - 1}
-              />
-            ))}
-          </div>
+          <ScenarioGrid scenarios={SCENARIOS} />
         </div>
       </section>
 
@@ -282,6 +275,16 @@ export default function MarathonSections() {
       <section className={`${styles.section} ${styles.whiteFromDark} ${styles.stepsSection}`}>
         <div className={styles.container}>
           <SectionTitle>Як проходить марафон</SectionTitle>
+          <div className={styles.stepsPhotoWrap}>
+            <Image
+              src={SITE_MARATHON_STEPS_IMAGE}
+              alt={`Як проходить марафон англійської в ${SITE_NAME}`}
+              fill
+              sizes="(max-width: 768px) 100vw, 1240px"
+              className={styles.stepsPhoto}
+              loading="lazy"
+            />
+          </div>
           <ol className={styles.timeline}>
             {STEPS.map((step, i) => (
               <li key={step}>
